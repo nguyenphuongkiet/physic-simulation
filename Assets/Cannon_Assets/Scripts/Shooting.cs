@@ -15,6 +15,7 @@ public class Shooting : MonoBehaviour
     public float launchHeight;
     [SerializeField] GameObject submitPanel;
     [SerializeField] GameObject distancePanel;
+    [SerializeField] AudioClip shootingAudio;
     public Camera mainCamera;
 
     public void Store()
@@ -52,6 +53,7 @@ public class Shooting : MonoBehaviour
                                                      transform.rotation);
             ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3
                                                 (0, 0, launchVelocity));
+            AudioManager.instance.Play(shootingAudio);
             float time = Mathf.Sqrt(2 * launchHeight / 9.8f);
             float distance = launchVelocity * time;
 
